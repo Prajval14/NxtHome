@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="icon" href="../static/images/logo/white.png" type="image/x-icon" />
+    <link rel="icon" href="../../static/images/logo/white.png" type="image/x-icon" />
     <title>NxtHome - Plan Your Home</title>
     <!-- Bootstrap CSS | JS | Icons CDN links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -17,13 +17,27 @@
     <!-- jQuery Reference -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- External CSS -->
-    <link href="../static/css/common.css" rel="stylesheet">       
+    <link href="../../static/css/common.css" rel="stylesheet">  
+    <link href="../../static/css/planning.css" rel="stylesheet">       
     <!-- External JS -->
-    <script src="../static/js/index.js"></script>
+    <script src="../../static/js/planning.js"></script>
     <!-- Naming convension:
     IDs - underscore(_)
     Class - dash(-) -->
 </head>
-<body>    
+<body>
+    <!-- Navbar -->
+    <nav></nav>
+    <!-- Main body content -->
+    <main class="m-3">
+        <h1>NxtHome</h1>
+        <form id="myForm">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
+            <button type="submit" class="btn btn-primary" id="submit_button">Click</button>
+        </form>
+    </main>    
+    <!-- Footer -->
+    <footer></footer>
 </body>
 </html>
