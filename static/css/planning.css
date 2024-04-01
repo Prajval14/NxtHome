@@ -1,0 +1,19 @@
+.form-group {
+    display: none;
+    height: 500px;
+}
+
+.form-group.active {
+    display: block;
+}
+
+#plan_form {
+    width: 75%;
+}
+
+/* Media query for screens with a minimum width of 1024 pixels (typical for desktops) */
+@media only screen and (min-width: 1025px) {
+    #plan_form {
+        width: 50%;
+    }
+}

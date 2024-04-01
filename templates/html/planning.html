@@ -29,12 +29,160 @@
     <!-- Navbar -->
     <nav></nav>
     <!-- Main body content -->
-    <main class="m-3">
-        <h1>NxtHome</h1>
-        <form id="myForm">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
-            <button type="submit" class="btn btn-primary" id="submit_button">Click</button>
+    <main class="m-auto text-center">
+        <h1>Plan Your Home</h1>
+        <h5>Please fill the information</h5>
+        <hr>
+        <form id="plan_form" class="m-auto">
+            <!-- Basic Information -->
+            <div class="form-group">
+                <h3>Basic Information</h3>
+                <div class="row my-3">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                            <label for="first_name">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <!-- change email value from login -->
+                    <input type="email" class="form-control" id="email_address" name="email_address" placeholder="Email Address" value="test@gmail.com" readonly>
+                    <label for="email_address">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
+                    <label for="phone_number">Phone Number</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date Of Birth">
+                    <label for="date_of_birth">Date Of Birth</label>
+                </div>
+            </div>
+            <!-- Financial Details -->
+            <div class="form-group">
+                <h3>Financial Details</h3>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" placeholder="Total home savings to date" aria-label="Amount (to the nearest dollar)" id="total_savings" name="total_savings"> 
+                    <span class="input-group-text">.00</span>
+                </div>
+                <select class="form-select mb-3" aria-label="Select example" id="monthly_income" name="monthly_income"> 
+                    <option selected>Select monthly income</option>
+                    <option value="1000">$0 - $2000</option>
+                    <option value="3000">$2001 - $4000</option>
+                    <option value="5000">$4001 - $6000</option>
+                    <option value="7000">$6001 - $8000</option>
+                    <option value="9000">$8001 - $10000</option>
+                    <option value="12500">$10001 - $15000</option>
+                    <option value="17500">$15001 - $20000</option>
+                    <option value="20000">greater than $20000</option>
+                </select>
+                <select class="form-select" aria-label="Select example" id="monthly_savings" name="monthly_savings">
+                    <option selected>Choose monthly home savings</option>
+                    <option value="10">10% of income</option>
+                    <option value="20">20% of income</option>
+                    <option value="30">30% of income</option>
+                    <option value="40">40% of income</option>
+                    <option value="50">50% of income</option>
+                    <option value="60">60% of income</option>
+                    <option value="70">70% of income</option>
+                    <option value="80">80% of income</option>
+                    <option value="90">90% of income</option>
+                    <option value="100">100% of income</option>
+                </select>
+            </div>
+            <!-- Housing Preferences -->
+            <div class="form-group">
+                <h3>Housing Preferences</h3>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="city_location" name="city_location" placeholder="City Location">
+                    <label for="city_location">City Location</label>
+                </div>
+                <select class="form-select mb-3" aria-label="Select example" id="property_type" name="property_type">
+                    <option selected>Type of property</option>
+                    <option value="house">House</option>
+                    <option value="apt">Apartment</option>
+                    <option value="condo">Condo</option>
+                </select>
+                <div class="d-flex inline">
+                    <label>Type of House: </label>
+                    <div class="ms-3 form-check">
+                        <input class="form-check-input" type="radio" name="house_type" value="attached">Attached
+                    </div>
+                    <div class="ms-3 form-check">
+                        <input class="form-check-input" type="radio" name="house_type" value="detached">Detached
+                    </div>
+                    <div class="ms-3 form-check">
+                        <input class="form-check-input" type="radio" name="house_type" value="semi_detached">Semi-Detached
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Total Bedrooms">
+                            <label for="bedrooms">Total Bedrooms</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="washrooms" name="washrooms" placeholder="Total Washrooms">
+                            <label for="washrooms">Total Washrooms</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="garage" name="garage" placeholder="Total Garage">
+                            <label for="garage">Total Garage</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="parking" name="parking" placeholder="Total Parking Space">
+                            <label for="parking">Total Parking Space</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Financial Goals -->
+            <div class="form-group">
+                <h3>Financial Goals</h3>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" placeholder="Desired budget for the property" aria-label="Amount (to the nearest dollar)" id="budget" name="budget"> 
+                    <span class="input-group-text">.00</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" placeholder="Target down payment amount" aria-label="Amount (to the nearest dollar)" id="down_payment" name="down_payment"> 
+                    <span class="input-group-text">.00</span>
+                </div>
+                <select class="form-select mb-3" aria-label="Select example" id="mortgage_terms" name="mortgage_terms">
+                    <option selected>Desired mortgage term</option>
+                    <option value="1">1 year (12 monnths)</option>
+                    <option value="2">2 years (24 months)</option>
+                    <option value="2.5">2.5 years (30 months)</option>
+                    <option value="3">3 years (36 months)</option>
+                    <option value="3.5">3.5 years (42 months)</option>
+                    <option value="4">4 years (48 months)</option>
+                    <option value="4.5">4.5 years (54 months)</option>
+                    <option value="5">5 years (60 months)</option>
+                </select>
+            </div>
+            <div class="btn-toolbar d-flex justify-content-center mt-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-primary" id="previous_btn">Previous</button>
+                    <button type="button" class="btn btn-primary" id="next_btn">Next</button>
+                </div>
+            </div>    
         </form>
     </main>    
     <!-- Footer -->
