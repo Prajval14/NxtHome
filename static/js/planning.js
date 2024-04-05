@@ -1,20 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     let formPages = $('#plan_form').find('.form-group');
-    let currentIndex = 0;
-    showTab(currentIndex);    
+    let formElements = document.getElementById('plan_form').elements;
+    let formData = {};
+    let currentFormPage = 0;
+    
+    toggleFormPage(currentFormPage);    
 
-    $('#next_btn').on('click', function() {    
-        currentIndex++;
-        showTab(currentIndex);
-    });
+    $('#next_btn').click(() => toggleFormPage(++currentFormPage));
+    $('#previous_btn').click(() => toggleFormPage(--currentFormPage));
 
-    $('#previous_btn').on('click', function() {                
-        currentIndex--;
-        showTab(currentIndex);
-    });
-
-    function showTab(n) {
-        // debugger
+    function toggleFormPage(n) {
+        // debugger        
         formPages.removeClass('active').eq(n).addClass('active');
         if (n === 0) {
             $('#previous_btn').prop('disabled', true);
@@ -25,24 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // debugger
             $('#next_btn').text('Submit');
             $('#next_btn').addClass('submit_button');
-            addClickEventToSubmitButton();
+            document.querySelector('.submit_button').addEventListener('click', () => submitForm(formElements, formData));            
         } else {
             $('#next_btn').text('Next');
-        }
+        }        
     }
 });
 
-function addClickEventToSubmitButton() {
-    $('.submit_button').on('click', function() {                
-        postFormData();
-    });
-}
-
-function postFormData() {
-    // debugger
-    event.preventDefault();
-    var formData = {};
-    var formElements = document.getElementById('plan_form').elements;
+function submitForm(formElements, formData){
     for (var i = 0; i < formElements.length; i++) {
         if (formElements[i].tagName === 'INPUT' || formElements[i].tagName === 'SELECT') {
             if (formElements[i].type === 'radio') {
@@ -55,17 +41,39 @@ function postFormData() {
                 formData[formElements[i].name] = formElements[i].value;
             }
         }
-    }
-    console.log(formData);   
+    }    
+    postFormData(formData);
+} 
 
-    //Send this data to python backend
+function postFormData(formData) {
+    fetch('/post_form_data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })    
+    .then(response => (response.json()))
+    .then(data => {        
+        getReportData(data);
+    }) 
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
-    // const params = {city: formData.city} 
-    // const url = '/get_data?' + new URLSearchParams(params);
-    // fetch(url)
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(data);
-    // })
-    // .catch(error => console.error('Error:', error));
+function getReportData(formData) {
+    const params = {city: formData.city_location} 
+    const url = '/get_data?' + new URLSearchParams(params);
+    fetch(url)
+    .then(response => {
+        if(response.ok) {
+            window.alert('data fetched')
+        }
+        return response.json()
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => console.error('Error:', error));    
 }
